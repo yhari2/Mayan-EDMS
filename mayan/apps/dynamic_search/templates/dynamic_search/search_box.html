@@ -8,14 +8,14 @@
         <div class="col-xs-12">
             <form action="{% url 'search:results' %}" class="form-horizontal" id="formSearch" method="get" role="search">
                 <div class="col-sm-2">
-                    <select class="form-control" id="selectSearchModel" name="_search_model">
+                    <select class="form-control" id="selectSearchModel" label="label" name="_search_model">
                         {% for search_model in search_models %}
                         {{ search_model.self.get_full_name }}
                             <option {% if search_model.get_full_name == 'documents.Document' %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
                         {% endfor %}
                     </select>
                 </div>
-
+ 
                 <div class="col-sm-10">
                     <div class="input-group">
                         <input class="form-control" name="q" placeholder="{% trans 'Search terms' %}" type="text" value="{{ search_terms|default:'' }}">
